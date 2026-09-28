@@ -1,0 +1,6 @@
+# Catatan: users.json TIDAK diabaikan karena merupakan deliverable tugas
+# (file contoh data user) dan harus ikut terkirim.
+
+*.log
+.DS_Store
+Thumbs.db

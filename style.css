@@ -1,0 +1,347 @@
+/* ============================================================
+   Sistem Login/Register PHP Native — Tugas Rutin 7
+   Bonus: tampilan modern, bersih, dan responsive
+   ============================================================ */
+
+:root {
+    --bg: #0f172a;
+    --bg-soft: #1e293b;
+    --card: #16213a;
+    --border: #2b3a55;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --success: #10b981;
+    --radius: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #312e81 0%, var(--bg) 55%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 48px 16px;
+}
+
+.container:has(.card.wide) {
+    max-width: 640px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Topbar (dashboard & edit profile) ---------- */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 24px;
+    background: rgba(22, 33, 58, 0.9);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(6px);
+}
+
+.brand {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.who {
+    color: var(--text-dim);
+    margin-right: 6px;
+}
+
+/* ---------- Typography ---------- */
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.card-head p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+}
+
+.card-foot {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.card-foot a,
+.welcome-text a {
+    color: #a5b4fc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-foot a:hover,
+.welcome-text a:hover {
+    text-decoration: underline;
+}
+
+.section-title {
+    font-size: 1rem;
+    margin: 26px 0 4px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+    color: #c7d2fe;
+}
+
+.welcome-text {
+    color: var(--text-dim);
+    line-height: 1.65;
+    margin-bottom: 22px;
+}
+
+code {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-size: 0.85em;
+}
+
+/* ---------- Form ---------- */
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label,
+.field .checkbox {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.field .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.field .checkbox input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.field-error {
+    display: block;
+    color: #fca5a5;
+    font-size: 0.82rem;
+    margin-top: 5px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-ghost:hover {
+    background: var(--bg-soft);
+}
+
+.btn-danger {
+    background: transparent;
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.12);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.actions.center {
+    justify-content: center;
+}
+
+.actions .btn {
+    width: auto;
+}
+
+/* ---------- Alert / pesan sukses & error (#10) ---------- */
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+    border: 1px solid;
+}
+
+.alert-success {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.45);
+    color: #6ee7b7;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.45);
+    color: #fca5a5;
+}
+
+.alert-info {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.45);
+    color: #c7d2fe;
+}
+
+/* ---------- Profil (dashboard) ---------- */
+
+.profile {
+    margin: 6px 0 18px;
+}
+
+.profile-row {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.profile-row dt {
+    flex: 0 0 150px;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.profile-row dd {
+    flex: 1;
+    word-break: break-all;
+}
+
+.hint {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 560px) {
+    .card {
+        padding: 24px 18px;
+    }
+
+    .profile-row {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
